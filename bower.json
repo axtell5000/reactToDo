@@ -1,0 +1,14 @@
+{
+  "name": "hello-proj",
+  "description": "Beginner react proj",
+  "main": "index.js",
+  "authors": [
+    "Stephen Axtell"
+  ],
+  "license": "ISC",
+  "keywords": [
+    "test"
+  ],
+  "homepage": "",
+  "private": true
+}
