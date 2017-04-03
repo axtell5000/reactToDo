@@ -8,6 +8,8 @@ var {Route, Router, IndexRoute, hashHistory} = require('react-router');
 //The es5 equivalent of above is, we have to do it three additional times for Router, IndexRoute, hashHistory
 //var Route = require('react-router').Route;
 
+var TodoApp = require('TodoApp');
+
 
 //Load foundation.need to use those style and css loader modules,to help app to use the file properly
 // require('style!css!foundation-sites/dist/css/foundation.min.css');
@@ -21,7 +23,7 @@ require('style!css!sass!applicationStyles');
 //<Router> is available because of our require above
 ReactDOM.render(
 
-  <p>Final Boilerplate</p>,
+  <TodoApp/>,
 
   document.getElementById('app')
 );
