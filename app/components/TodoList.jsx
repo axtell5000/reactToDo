@@ -6,6 +6,8 @@ var TodoList = React.createClass({
   render: function () {
 
    var {todos} = this.props;
+   console.log('In TodoList.jsx', this);
+
    var renderTodos = () => {
      return todos.map((todo)  => {
        //key is important, each component has to have an unique id
