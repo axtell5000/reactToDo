@@ -34,6 +34,7 @@ var TodoApp = React.createClass({
   },
 
   handleAddTodo: function (text) {
+    console.log('handle', text);
     alert('new todo: ' + text);
   },
   handleSearch: function (showCompleted, searchText) {
