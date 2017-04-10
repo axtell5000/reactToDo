@@ -4,11 +4,14 @@ var Todo = React.createClass({
 
 
   render: function () {
-    var {text, id} = this.props;
-
+    var {text, id, completed} = this.props; //getting props from parent
+    //must use defaultChecked instead of the normal checked - otherwise it will cause errors
     return (
-      <div>
-        {id}. {text}
+      <div onClick={() => {
+        this.props.onToggle(id);
+      }}>
+        <input type="checkbox" defaultChecked={completed}/>
+        {text}
       </div>
     )
   }
