@@ -2,6 +2,7 @@ var React = require('react');
 var TodoList = require('TodoList');
 var AddTodo = require('AddTodo');
 var TodoSearch = require('TodoSearch');
+var TodoAPI = require('TodoAPI');
 var uuid = require('node-uuid');
 
 //This is the only component that maintain state, the rest are for presentation and user interactive responses,
@@ -12,33 +13,11 @@ var TodoApp = React.createClass({
     return {
       showCompleted: false,
       searchText: '',
-      todos: [
-        {
-          id: uuid(),
-          text: 'Walk the dog',
-          completed: false
-        },
-        {
-          id: uuid(),
-          text: 'Clean the yard',
-          completed: true
-        },
-        {
-          id: uuid(),
-          text: 'Feed the cat',
-          completed: false
-        },
-        {
-          id: uuid(),
-          text: 'Wash the dishes',
-          completed: false
-        }
-
-      ]
+      todos: TodoAPI.getTodos()
     }
   },
-  handleToggle: function (id) {
-    alert(id);
+  componentDidUpdate: function () {
+    TodoAPI.setTodos(this.state.todos);
   },
 
   handleAddTodo: function (text) {
