@@ -1,9 +1,12 @@
 var React = require('react');
+var uuid = require('node-uuid');
+var moment = require('moment');
+
 var TodoList = require('TodoList');
 var AddTodo = require('AddTodo');
 var TodoSearch = require('TodoSearch');
 var TodoAPI = require('TodoAPI');
-var uuid = require('node-uuid');
+
 
 //This is the only component that maintain state, the rest are for presentation and user interactive responses,
 //Try keep the number of components that maintain state to a minimum
@@ -28,7 +31,9 @@ var TodoApp = React.createClass({
         {
           id: uuid(),
           text: text,
-          completed: false
+          completed: false,
+          createdAt: moment().unix(),
+          completedAt: undefined
         }
       ]
     });
@@ -38,6 +43,7 @@ var TodoApp = React.createClass({
 
       if (todo.id === id) {
         todo.completed = !todo.completed;
+        todo.completedAt = todo.completed ? moment().unix() : undefined;
       }
       return todo;
     });
@@ -52,13 +58,15 @@ var TodoApp = React.createClass({
   },
   render: function () {
 
-    var {todos} = this.state; //getting from the state
+    var {todos, showCompleted, searchText} = this.state; //getting from the state
+    var filteredTodos = TodoAPI.filterTodos(todos, showCompleted, searchText);
+
 
     /*Have to pass the toggle function down to todoList first*/
     return (
       <div>
         <TodoSearch onSearch={this.handleSearch}/>
-        <TodoList todos={todos}  onToggle={this.handleToggle}/>
+        <TodoList todos={filteredTodos}  onToggle={this.handleToggle}/>
         <AddTodo onAddTodo={this.handleAddTodo}/>
       </div>
     );
