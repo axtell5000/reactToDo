@@ -6,6 +6,7 @@ var Todo = React.createClass({
 
   render: function () {
     var {text, id, completed, createdAt, completedAt} = this.props; //getting props from parent
+    var todoClassName = completed ? 'todo todo-completed' : 'todo';
 
     var renderDate = () => {
       var message = 'Created: ';
@@ -21,12 +22,16 @@ var Todo = React.createClass({
 
     //must use defaultChecked instead of the normal checked - otherwise it will cause errors
     return (
-      <div onClick={() => {
+      <div className={todoClassName} onClick={() => {
         this.props.onToggle(id);
       }}>
-        <input type="checkbox" defaultChecked={completed}/>
-        <p>{text}</p>
-        <p>{renderDate()}</p>
+        <div>
+          <input type="checkbox" defaultChecked={completed}/>
+        </div>
+        <div>
+          <p>{text}</p>
+          <p className="todo__subtext">{renderDate()}</p>
+        </div>
       </div>
     )
   }

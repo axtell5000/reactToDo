@@ -9,6 +9,13 @@ var TodoList = React.createClass({
    console.log('In TodoList.jsx', this);
 
    var renderTodos = () => {
+
+     if (todos.length === 0) {
+       return (
+         <p className="container__message">Nothing To Do</p>
+       );
+     }
+
      return todos.map((todo)  => {
        //key is important, each component has to have an unique id
        //Now we have to pass down onToggle to Todo
