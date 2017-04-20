@@ -20,6 +20,7 @@
     "babel-preset-stage-0": "^6.22.0",
     "bower": "^1.8.0",
     "css-loader": "^0.27.2",
+    "deep-freeze-strict": "^1.1.1",
     "expect": "^1.20.2",
     "foundation-sites": "^6.3.1",
     "jquery": "^3.1.1",
