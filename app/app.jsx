@@ -10,6 +10,17 @@ var {Route, Router, IndexRoute, hashHistory} = require('react-router');
 
 var TodoApp = require('TodoApp');
 
+var actions = require('actions');
+var store = require('configureStore').configure(); //calls the store we set up
+
+store.subscribe(() => {
+  console.log('New state ', store.getState());
+});
+
+store.dispatch(actions.addTodo('Clean the yard'));
+store.dispatch(actions.setSearchText('yard'));
+store.dispatch(actions.toggleShowCompleted());
+
 
 //Load foundation.need to use those style and css loader modules,to help app to use the file properly
 // require('style!css!foundation-sites/dist/css/foundation.min.css');
