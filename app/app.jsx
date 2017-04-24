@@ -1,6 +1,7 @@
 
 var React = require('react');
 var ReactDOM = require('react-dom');
+var {Provider} = require('react-redux'); //need this react-redux module to connect react and redux
 
 //Using destructuring syntax - es6
 var {Route, Router, IndexRoute, hashHistory} = require('react-router');
@@ -31,10 +32,12 @@ $(document).foundation();
 require('style!css!sass!applicationStyles');
 
 
-//<Router> is available because of our require above
+//Provider allows access to the redux store we created, even the children within
 ReactDOM.render(
 
-  <TodoApp/>,
+  <Provider store={store}>
+    <TodoApp/>
+  </Provider>,
 
   document.getElementById('app')
 );

@@ -1,11 +1,13 @@
 var React = require('react');
+var {connect} = require('react-redux');
 var moment = require('moment');
+var actions = require('actions');
 
-var Todo = React.createClass({
+export var Todo = React.createClass({
 
 
   render: function () {
-    var {text, id, completed, createdAt, completedAt} = this.props; //getting props from parent
+    var {text, id, completed, createdAt, completedAt, dispatch} = this.props; //getting props from parent
     var todoClassName = completed ? 'todo todo-completed' : 'todo';
 
     var renderDate = () => {
@@ -23,7 +25,7 @@ var Todo = React.createClass({
     //must use defaultChecked instead of the normal checked - otherwise it will cause errors
     return (
       <div className={todoClassName} onClick={() => {
-        this.props.onToggle(id);
+        dispatch(actions.toggleTodo(id));
       }}>
         <div>
           <input type="checkbox" defaultChecked={completed}/>
@@ -38,5 +40,5 @@ var Todo = React.createClass({
 
 });
 
-
-module.exports = Todo;
+//The Todo is specifing what component we want to connect to the store, plus it helps with our testing files
+export default connect()(Todo);
