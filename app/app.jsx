@@ -15,6 +15,7 @@ var actions = require('actions');
 var store = require('configureStore').configure(); //calls the store we set up
 var TodoApi = require('TodoApi');
 
+
 store.subscribe(() => {
   var state = store.getState();
   console.log('New state ', state);
