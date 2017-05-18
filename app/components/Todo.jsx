@@ -25,7 +25,7 @@ export var Todo = React.createClass({
     //must use defaultChecked instead of the normal checked - otherwise it will cause errors
     return (
       <div className={todoClassName} onClick={() => {
-        dispatch(actions.toggleTodo(id));
+        dispatch(actions.startToggleTodo(id, !completed));
       }}>
         <div>
           <input type="checkbox" defaultChecked={completed}/>
