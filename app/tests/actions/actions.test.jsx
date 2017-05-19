@@ -89,6 +89,7 @@ describe('Actions', () => {
   describe('Tests with firebase todos', () => {
     var testTodoRef;
 
+    //Do something before tests start
     beforeEach((done) => {
       var todosRef = firebaseRef.child('todos');
 
@@ -105,6 +106,7 @@ describe('Actions', () => {
         .catch(done);
     });
 
+    //Do something after testing ends
     afterEach((done) => {
       testTodoRef.remove().then(() => done());
     });

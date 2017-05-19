@@ -5,6 +5,9 @@
 var webpack = require('webpack');
 var path = require('path');
 
+//This is going to help us streamline our code when going into production
+process.env.NODE_ENV = process.env.NODE_ENV || 'development';
+
 module.exports = {
     entry : [
       //to allow jquery and foundtion to be recognized by webpack, we must add 'script!' in front. The nmp module script-loader allows us to do this.
@@ -20,6 +23,11 @@ module.exports = {
       new webpack.ProvidePlugin({
         '$': 'jquery',
         'jQuery' : 'jquery'
+      }),
+      new webpack.optimize.UglifyJsPlugin({
+        compressor: {
+          warnings: false
+        }
       })
     ],
     output: {
@@ -63,5 +71,5 @@ module.exports = {
       ]
     },
 
-    devtool: 'cheap-module-eval-source-map'
+    devtool: process.env.NODE_ENV === 'production' ? undefined : 'cheap-module-eval-source-map'
 };
