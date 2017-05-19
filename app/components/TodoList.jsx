@@ -13,13 +13,15 @@ export var TodoList = React.createClass({
 
    var renderTodos = () => {
 
-     if (todos.length === 0) {
+     var filteredTodos = TodoApi.filterTodos(todos, showCompleted, searchText);
+
+     if (filteredTodos.length === 0) {
        return (
          <p className="container__message">Nothing To Do</p>
        );
      }
 
-     return TodoApi.filterTodos(todos, showCompleted, searchText).map((todo) => {
+     return filteredTodos.map((todo) => {
        //key is important, each component has to have an unique id
        //Now we have to pass down onToggle to Todo
        return (
