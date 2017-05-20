@@ -13,7 +13,7 @@ var TodoApp = require('TodoApp');
 
 var actions = require('actions');
 var store = require('configureStore').configure(); //calls the store we set up
-var TodoApi = require('TodoApi');
+var TodoApi = require('TodoAPI');
 
 
 store.dispatch(actions.startAddTodos());
