@@ -1,7 +1,7 @@
 var React = require('react');
 var {connect} = require('react-redux');
 import Todo from 'Todo';
-var TodoApi = require('TodoAPI');
+var TodoAPI = require('TodoAPI');
 
 
 export var TodoList = React.createClass({
@@ -13,7 +13,7 @@ export var TodoList = React.createClass({
 
    var renderTodos = () => {
 
-     var filteredTodos = TodoApi.filterTodos(todos, showCompleted, searchText);
+     var filteredTodos = TodoAPI.filterTodos(todos, showCompleted, searchText);
 
      if (filteredTodos.length === 0) {
        return (
