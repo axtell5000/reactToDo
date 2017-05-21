@@ -9,11 +9,11 @@ var {Route, Router, IndexRoute, hashHistory} = require('react-router');
 //The es5 equivalent of above is, we have to do it three additional times for Router, IndexRoute, hashHistory
 //var Route = require('react-router').Route;
 
-var TodoApp = require('TodoApp');
-
 var actions = require('actions');
 var store = require('configureStore').configure(); //calls the store we set up
 var TodoApi = require('TodoAPI');
+import Login from 'Login';
+import TodoApp from 'TodoApp';
 
 
 store.dispatch(actions.startAddTodos());
@@ -32,7 +32,12 @@ require('style!css!sass!applicationStyles');
 ReactDOM.render(
 
   <Provider store={store}>
-    <TodoApp/>
+    <Router history={hashHistory}>
+      <Route path="/">
+        <Route path="todos" component={TodoApp}/>
+        <IndexRoute component={Login}/>
+      </Route>
+    </Router>
   </Provider>,
 
   document.getElementById('app')

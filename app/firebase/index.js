@@ -22,5 +22,6 @@ try {
 
 }
 
+export var githubProvider = new firebase.auth.GithubAuthProvider(); //telling what social platform is being used
 export var firebaseRef = firebase.database().ref();
 export default firebase;
